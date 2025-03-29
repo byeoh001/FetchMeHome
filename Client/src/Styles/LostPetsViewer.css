@@ -1,0 +1,108 @@
+/* 🔹 Centering the Popup Properly */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; /* Fixed width */
+    max-width: 90%; /* Prevent it from overflowing */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+}
+
+/* 🔹 Ensure Popup Content is Well Formatted */
+.popup-content {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 🔹 Input Fields Styling */
+.popup-content input {
+    width: 90%; /* Keep within bounds */
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* 🔹 Submit Button */
+.popup-content button {
+    width: 100%;
+    background-color: var(--orange);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.popup-content button:hover {
+    background-color: var(--hoverorange);
+}
+
+/* 🔹 Close Button */
+.close-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    float: right;
+    border-radius: 5px;
+}
+
+.close-btn i {
+    margin-left: 5px;
+}
+
+/* 🔹 Prevent Report UI Overflowing */
+.popup-content {
+    max-height: 400px;
+    overflow-y: auto; /* Scroll if needed */
+}
+
+/* 🔹 Ensure Pet Card Layout is Correct */
+.pet-view-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--orange);
+    width: 310px;
+    overflow: hidden;
+}
+
+/* 🔹 Ensure Images are Displayed Correctly */
+.pet-card-pic img {
+    width: 310px;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* 🔹 Show Interest (Upload Image) Button */
+.show-interest-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.show-interest-btn button {
+    font-size: 14px;
+    border-radius: 100px;
+    border: none;
+    padding: 8px 15px;
+    color: var(--white);
+    background-color: var(--orange);
+    cursor: pointer;
+}
+
+.show-interest-btn button:hover {
+    background-color: var(--hoverorange);
+}
