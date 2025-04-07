@@ -6,6 +6,7 @@ import ApprovedRequests from './UserApproved'
 import LostPostingPets from './LostPostingPets'
 import LostRequests from "./LostPetRequests"
 import SubmittedReq from './SubmittedReq'
+import UserProfile from './UserProfile'
 
 
 const UserScreen = () => {
@@ -15,6 +16,7 @@ const UserScreen = () => {
     <div className='admin-screen-container'>
       <div className='admin-screen-left'>
         <div>
+          <p onClick={() => setScreen('My Profile')}><strong>My Profile</strong></p>
           <p onClick={() => setScreen('postingPet')}>Adoption Posts</p>
           <p onClick={() => setScreen('adoptedHistory')}>Adoption History</p>
           <p onClick={() => setScreen('adoptingPet')}>Adoption Requests</p>
@@ -29,6 +31,7 @@ const UserScreen = () => {
         </div>
       </div>
       <div className='admin-screen-right'>
+        {screen === 'My Profile' && <UserProfile />}
         {screen === 'postingPet' && <PostingPets />}
         {screen === 'adoptedHistory' && <AdoptedHistory />}
         {screen === 'adoptingPet' && <AdoptingRequests />}

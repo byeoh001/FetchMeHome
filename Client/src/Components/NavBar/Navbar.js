@@ -49,6 +49,8 @@ const Navbar = () => {
             {adoptDropdown && (
               <ul className="dropdown-menu">
                 <li><Link to="/personality">Personality</Link></li>
+                <hr className="dropdown-divider" />
+                <li><Link to="/saved">Saved Pets</Link></li>
               </ul>
             )}
           </li>
