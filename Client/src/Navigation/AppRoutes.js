@@ -11,6 +11,8 @@ import LoginRoutes from "./LoginRoutes";
 import LostPetRoutes from "./LostPetRoutes";
 import PanelRoutes from "./PanelRoutes";
 import PersonalityRoutes from "./PersonalityRoutes";
+import ProfileRoutes from "./ProfileRoutes";
+import SavedPetRoutes from "./SavedPetRoutes"
 
 
 const AppRoutes = () => {
@@ -27,6 +29,8 @@ const AppRoutes = () => {
       {AdoptFormRoutes}
       {AdminRoutes}
       {PersonalityRoutes}
+      {ProfileRoutes}
+      {SavedPetRoutes}
     </Routes>
   );
 };

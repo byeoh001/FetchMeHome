@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
+
   name: {
     type: String,
     required: true,
@@ -17,7 +18,21 @@ const UserSchema = new mongoose.Schema({
   isAdmin: {
     type: Boolean, 
     default: false, // Default is false; set to true for admins manually
-  }
+  },
+  profileImage: {
+    type: String,
+    default: ""
+  },
+  savedPets: [
+    {
+      name: String,
+      species: String,
+      temperament: String,
+      life_span: String,
+      image: String
+    }
+  ]
+
 }, { timestamps: true });
 
 module.exports = mongoose.model("User", UserSchema);
