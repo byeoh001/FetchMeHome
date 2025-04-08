@@ -55,7 +55,7 @@ const UserPetCards = (props) => {
       }
     
       setIsEditing(false);
-      props.updateCards(); // ✅ Refresh UI
+      props.updateCards(); 
     } catch (err) {
       console.error('Error updating pet:', err);
       setShowErrorPopup(true);
@@ -66,28 +66,28 @@ const UserPetCards = (props) => {
     setIsDeleting(true);
     try {
         const petId = props.pet._id;
-        const url = `http://localhost:4000/deleteP/${petId}?userId=${currentUserId}`; // ✅ Use query params
+        const url = `http://localhost:4000/deleteP/${petId}?userId=${currentUserId}`; 
 
-        console.log("🚀 Sending DELETE request to:", url);
+        console.log("Sending DELETE request to:", url);
 
         const response = await fetch(url, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" }
         });
 
-        console.log("🛑 Response Status:", response.status);
+        console.log("Response Status:", response.status);
 
         if (!response.ok) {
             const errorData = await response.json();
-            console.error("❌ API Error:", errorData);
+            console.error("API Error:", errorData);
             setShowErrorPopup(true);
             throw new Error("Failed to delete pet");
         } else {
-            console.log("✅ Pet deleted successfully!");
+            console.log("Pet deleted successfully!");
             setShowDeletedSuccess(true);
         }
     } catch (err) {
-        console.error("🔥 Error deleting pet:", err);
+        console.error("Error deleting pet:", err);
         setShowErrorPopup(true);
     } finally {
         setIsDeleting(false);
@@ -150,12 +150,12 @@ const UserPetCards = (props) => {
         {/*  Buttons for Owner (Always Visible) */}
         {isOwner && (
           <div className='app-rej-btn' style={{ display: 'flex', gap: '10px' }}>
-            {/* ✅ Edit Button (Only show if showEditButton is true) */}
+            {/* Edit Button (Only show if showEditButton is true) */}
             {props.showEditButton && (
               <button onClick={() => setIsEditing(true)}>Edit</button>
             )}
 
-            {/* ✅ Delete Button */}
+            {/* Delete Button */}
             
             {props.deleteBtnText && (
               <button onClick={handleReject} disabled={isDeleting}>

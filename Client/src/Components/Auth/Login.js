@@ -20,9 +20,9 @@ const Login = () => {
     try {
       const res = await axios.post("http://localhost:4000/api/users/login", formData);
 
-      if (res.data.user && res.data.user._id) {  // ✅ Ensure _id is present
+      if (res.data.user && res.data.user._id) {  // Ensure _id is present
       localStorage.setItem("token", res.data.token);
-      localStorage.setItem("userId", res.data.user._id);  // ✅ Store _id properly
+      localStorage.setItem("userId", res.data.user._id);  // Store _id properly
       localStorage.setItem("user", JSON.stringify(res.data.user));
       localStorage.setItem("isAdmin", res.data.user.isAdmin);
 
@@ -30,11 +30,11 @@ const Login = () => {
       alert(`Welcome, ${res.data.user.name}`);
       navigate("/");
       } else {
-      console.error("❌ ERROR: No userId returned from backend!");
+      console.error("ERROR: No userId returned from backend!");
       }
 
     } catch (err) {
-      console.error("❌ Login error:", err.response?.data?.msg || err.message);
+      console.error("Login error:", err.response?.data?.msg || err.message);
       alert(err.response?.data?.msg || "Error logging in");
     }
 };

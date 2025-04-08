@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import LostPetCards from './LostPetCards'; // ✅ Import the correct component
+import LostPetCards from './LostPetCards'; 
 
 const LostPostingPets = () => {
   const [lostPets, setLostPets] = useState([]);
@@ -15,7 +15,7 @@ const LostPostingPets = () => {
         return;
       }
 
-      // ✅ Fetch only the lost pets reported by the logged-in user
+      // Fetch only the lost pets reported by the logged-in user
       const response = await fetch(`http://localhost:4000/myLostPets/${currentUserId}`);
       if (!response.ok) {
         throw new Error('An error occurred while fetching your lost pets.');
@@ -27,7 +27,7 @@ const LostPostingPets = () => {
     } finally {
       setLoading(false);
     }
-  }, [currentUserId]); // ✅ Only re-fetch if currentUserId changes
+  }, [currentUserId]); // Only re-fetch if currentUserId changes
 
   useEffect(() => {
     fetchLostPets();
@@ -44,7 +44,7 @@ const LostPostingPets = () => {
             pet={pet}
             updateCards={fetchLostPets}
             deleteBtnText="Delete"
-            showEditButton={true} // ✅ Allow users to edit their lost pet reports
+            showEditButton={true} // Allow users to edit their lost pet reports
           />
         ))
       ) : (

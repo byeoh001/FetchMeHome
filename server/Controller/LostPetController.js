@@ -4,25 +4,25 @@ const path = require('path');
 
 const postLostPetRequest = async (req, res) => {
   try {
-    // ✅ Check if a file (picture) was uploaded
+    // Check if a file (picture) was uploaded
     if (!req.file) {
-      return res.status(400).json({ error: "❌ No file uploaded!" });
+      return res.status(400).json({ error: "No file uploaded!" });
     }
 
-    // ✅ Extract fields from the request body
+    // Extract fields from the request body
     const { name, petAge, lastSeenLocation, description, email, phone, type, userId } = req.body;
     const { filename } = req.file; // Get uploaded image filename
 
-    // ✅ Validate required fields
+    // Validate required fields
     if (!name || !petAge || !lastSeenLocation || !description || !email || !phone || !type || !filename) {
-      return res.status(400).json({ error: "❌ Missing required fields!" });
+      return res.status(400).json({ error: "Missing required fields!" });
     }
 
     if (!userId) {
-      return res.status(400).json({ error: "❌ User ID (reportedBy) is required" });
+      return res.status(400).json({ error: "User ID (reportedBy) is required" });
     }
 
-    // ✅ Create lost pet listing in the database
+    // Create lost pet listing in the database
     const lostPet = await LostPet.create({
       name,
       petAge,
@@ -32,20 +32,20 @@ const postLostPetRequest = async (req, res) => {
       phone,
       type,
       filename,
-      reportedBy: userId, // ✅ Owner who reported the lost pet
+      reportedBy: userId, // Owner who reported the lost pet
       status: 'Missing'
     });
 
     res.status(200).json(lostPet);
   } catch (error) {
-    console.error("❌ Error saving lost pet:", error);
+    console.error("Error saving lost pet:", error);
     res.status(500).json({ error: error.message });
   }
 };
 
 const allLostPets = async (req, res) => {
   try {
-    const data = await LostPet.find().sort({ createdAt: -1 }); // ✅ Get ALL lost pets, sorted by newest first
+    const data = await LostPet.find().sort({ createdAt: -1 }); // Get ALL lost pets, sorted by newest first
     if (data.length > 0) {
       res.status(200).json(data);
     } else {

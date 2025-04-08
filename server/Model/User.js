@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
   },
   isAdmin: {
     type: Boolean, 
-    default: false, // Default is false; set to true for admins manually
+    default: false, // Default is false
   },
   profileImage: {
     type: String,

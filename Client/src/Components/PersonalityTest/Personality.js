@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-// 🔹 Modal Component
+// Modal Component
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
@@ -33,7 +33,7 @@ const Modal = ({ isOpen, onClose, children }) => {
   );
 };
 
-// 🔸 Quiz Data
+// Quiz Data
 const petPersonalityQuiz = [
   {
     question: "What best describes your daily activity level?",
@@ -93,7 +93,7 @@ const petPersonalityQuiz = [
   }
 ];
 
-// 🔸 Single Question
+// Single Question
 const Question = ({ question, options, selectedOption, onChange }) => (
   <div style={{ marginBottom: "15px" }}>
     <h2>{question}</h2>
@@ -112,7 +112,7 @@ const Question = ({ question, options, selectedOption, onChange }) => (
   </div>
 );
 
-// 🔸 Main Component
+// Main Component
 const Personality = () => {
   const [answers, setAnswers] = useState({});
   const [personality, setPersonality] = useState("");
@@ -156,7 +156,7 @@ const Personality = () => {
     setSuggestLoading(false);
   };
 
-  // ❤️ Save Pet Function
+  // Save Pet Function
   const handleSavePet = async (pet) => {
     const token = localStorage.getItem("token");
     try {
@@ -212,7 +212,7 @@ const Personality = () => {
         </h2>
       )}
 
-      {/* 🔹 Modal with Suggestions */}
+      {/* Modal with Suggestions */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <h2 style={{ textAlign: "center", fontSize: "30px", color: "orange" }}>Suggested Pets</h2>
 
@@ -263,7 +263,7 @@ const Personality = () => {
                 <span style={{ color: "#999" }}>No image available</span>
               )}
               <br />
-              {/* ❤️ Save Button */}
+              {/* Save Button */}
               <button
                 onClick={() => handleSavePet(breed)}
                 style={{
@@ -276,7 +276,7 @@ const Personality = () => {
                   cursor: "pointer"
                 }}
               >
-                ❤️ Save Pet
+                ❤️ Save Pet ❤️
               </button>
             </li>
           ))}

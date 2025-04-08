@@ -1,5 +1,5 @@
 import React from "react";
-import lostPetImage from "./images/lostdog.png"; // Ensure you use a unique image
+import lostPetImage from "./images/lostdog.png"; 
 import { Link } from "react-router-dom";
 import "../../Styles/ViewFind.css"
 

@@ -10,13 +10,13 @@ const AdoptionReq = () => {
   const currentUserId = localStorage.getItem("userId"); 
 
   const fetchForms = useCallback(async () => {
-    console.log(`📡 Fetching adoption requests for Owner ID: ${currentUserId}`);
+    console.log(`Fetching adoption requests for Owner ID: ${currentUserId}`);
     setLoading(true);
     try {
       const response = await fetch(`http://localhost:4000/adoption-requests/${currentUserId}`);
       if (!response.ok) throw new Error('Error fetching forms');
       const data = await response.json();
-      console.log("📋 Retrieved adoption requests:", data);
+      console.log("Retrieved adoption requests:", data);
       setForms(data);
     } catch (error) {
       console.log(error);

@@ -93,14 +93,14 @@ router.put("/upload-image", auth, upload.single("profileImage"), async (req, res
   }
 });
 
-
+// save all favourite pets
 router.post("/save-pet", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
     const pet = req.body;
 
-    console.log("👉 Pet being saved:", pet);
-    console.log("👉 User:", user.email);
+    console.log("Pet being saved:", pet);
+    console.log("User:", user.email);
 
     if (!user) return res.status(404).json({ msg: "User not found" });
     if (!pet || !pet.name || !pet.species) {
@@ -118,12 +118,12 @@ router.post("/save-pet", auth, async (req, res) => {
     await user.save();
     res.json({ msg: "Pet saved successfully!" });
   } catch (err) {
-    console.error("❌ Error saving pet:", err);
+    console.error("Error saving pet:", err);
     res.status(500).json({ msg: "Server error saving pet" });
   }
 });
 
-
+// get all saved petd
 router.get("/saved-pets", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
@@ -131,7 +131,7 @@ router.get("/saved-pets", auth, async (req, res) => {
 
     res.json({ savedPets: user.savedPets });
   } catch (err) {
-    console.error("❌ Error fetching saved pets:", err);
+    console.error("Error fetching saved pets:", err);
     res.status(500).json({ msg: "Server error" });
   }
 });

@@ -96,16 +96,16 @@ const handleAdoptionRequest = async (req, res) => {
         const { formId, action } = req.body;
         // const { userId } = req.params; // Get user ID from request URL
 
-        console.log("📌 Received API Request:", req.body);
-        // console.log("🔑 User ID from Params:", userId);
-        console.log("📡 Searching for formId:", formId);
+        console.log("Received API Request:", req.body);
+    
+        console.log("Searching for formId:", formId);
 
         const form = await AdoptForm.findById(formId);
         if (!form) {
             return res.status(404).json({ message: "Adoption request not found" });
         }
 
-        console.log("✅ Found Adoption Request:", form);
+        console.log("Found Adoption Request:", form);
 
         form.status = action === "Approve" ? "Approved" : "Rejected";
         await form.save();

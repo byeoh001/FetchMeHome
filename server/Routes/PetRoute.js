@@ -26,10 +26,10 @@ router.get("/adoptedPets", allPets); // Now allPets receives (req, res) properly
 router.get("/approvedPets/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
-    console.log("📡 Fetching approved pets for Owner ID:", userId);
+    console.log("Fetching approved pets for Owner ID:", userId);
 
     const approvedPets = await Pet.find({ postedBy: userId, status: "Adopted" });
-    console.log("📋 Found approved pets:", approvedPets);
+    console.log("Found approved pets:", approvedPets);
     res.status(200).json(approvedPets);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -45,7 +45,7 @@ router.delete("/deleteP/:petId", async (req, res) => {
       console.log(" Request Query Params:", req.query);
 
       const { petId } = req.params;
-      const userId = req.query.userId; // Ensure we are reading userId correctly
+      const userId = req.query.userId; 
 
       if (!petId || !userId) {
           console.log(" Missing pet ID or user ID");
@@ -53,7 +53,7 @@ router.delete("/deleteP/:petId", async (req, res) => {
       }
 
       const pet = await Pet.findById(petId);
-      console.log(" Found pet in database:", pet); // Debug log
+      console.log(" Found pet in database:", pet); 
 
       if (!pet) {
           console.log(" Pet not found in database");

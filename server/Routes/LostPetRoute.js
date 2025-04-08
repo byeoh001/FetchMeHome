@@ -147,7 +147,7 @@ router.get("/myLostPetRequests/:userId", async (req, res) => {
       .populate("finderId", "email phone") // Ensure finderId is included
       .sort({ createdAt: -1 });
 
-    console.log("Fetched Reports:", reports); // Debugging
+    console.log("Fetched Reports:", reports);
 
     // Filter only lost pets that belong to the logged-in user
     const userReports = reports.filter(report => report.petId?.reportedBy?.toString() === userId);
@@ -191,8 +191,8 @@ router.put("/acceptLostPetRequest/:requestId", async (req, res) => {
     await request.save();
 
     const lostPet = await LostPet.findByIdAndUpdate(
-      request.petId, // Use the petId from the request
-      { status: "Found" }, // Set status to Found
+      request.petId, 
+      { status: "Found" }, 
       { new: true }
     );
 

@@ -26,7 +26,7 @@ const SavedPets = () => {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>❤️ Your Saved Pets</h1>
+      <h1>❤️ Your Saved Pets ❤️</h1>
       {savedPets.length === 0 ? (
         <p>You haven’t saved any pets yet.</p>
       ) : (

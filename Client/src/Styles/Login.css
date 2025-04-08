@@ -1,4 +1,4 @@
-/* 🌟 Reset & Full-Screen Background */
+/* Reset & Full-Screen Background */
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +8,7 @@
 
 
   
-  /* 🌟 Background Image */
+  /*  Background Image */
   .logins-container {
     height: 100vh;
     width: 100vw;
@@ -18,7 +18,7 @@
     background: url('../Assets/catlogin.jpg') no-repeat center center/cover;
   }
   
-  /* 🌟 Glassmorphic Form Styling */
+  /*  Glassmorphic Form Styling */
   .login-form {
     position: relative;
     width: 100%;
@@ -31,7 +31,7 @@
     backdrop-filter: blur(8px);
   }
   
-  /* 🌟 Semi-Transparent Glass Effect */
+  /*  Semi-Transparent Glass Effect */
   .login-form::before {
     content: '';
     position: absolute;
@@ -46,7 +46,7 @@
     pointer-events: none;
   }
   
-  /* 🌟 Avatar Icon */
+  /*  Avatar Icon */
   .login-avatar {
     position: absolute;
     top: -50px;
@@ -58,7 +58,7 @@
     object-fit: cover;
   }
   
-  /* 🌟 Title Styling */
+  /*  Title Styling */
   .login-title {
     text-align: center;
     letter-spacing: 1px;
@@ -67,7 +67,7 @@
     font-weight: bold;
   }
   
-  /* 🌟 Input Fields */
+  /*  Input Fields */
   .input-group {
     position: relative;
     margin-bottom: 25px;
@@ -84,7 +84,7 @@
     color: #fff;
   }
   
-  /* 🌟 Floating Label Animation */
+  /*  Floating Label Animation */
   .input-group label {
     position: absolute;
     top: 12px;
@@ -95,7 +95,7 @@
     color: rgba(255, 255, 255, 0.6);
   }
   
-  /* 🌟 Fix: Ensure Label Moves Up */
+  /*  Fix: Ensure Label Moves Up */
   .input-group input:focus + label,
   .input-group input:not(:placeholder-shown) + label {
     transform: translateY(-18px);
@@ -103,12 +103,12 @@
     font-size: 0.8rem;
   }
   
-  /* 🌟 Placeholder Fix */
+  /*  Placeholder Fix */
   .input-group input::placeholder {
     opacity: 0;
   }
   
-  /* 🌟 Login Button */
+  /*  Login Button */
   .login-button {
     display: block;
     width: 100%;
@@ -126,7 +126,7 @@
     font-weight: bold;
   }
   
-  /* 🌟 Hover Effect */
+  /*  Hover Effect */
   .login-button:hover {
     background: #e65c00;
   }
@@ -150,7 +150,7 @@
     margin-top: 10px; /* Adds space between buttons */
 }
 
-/* 🌟 Hover Effect */
+/*  Hover Effect */
 .admin-login-button:hover {
     background: #e65c00; /* Same hover effect as login button */
 }

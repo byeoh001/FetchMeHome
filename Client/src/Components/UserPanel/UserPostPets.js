@@ -15,7 +15,7 @@ const UserPostPets = () => {
         return;
       }
 
-      // ✅ Fetch only the pets posted by the logged-in user
+      // Fetch only the pets posted by the logged-in user
       const response = await fetch(`http://localhost:4000/myPets/${currentUserId}`);
       if (!response.ok) {
         throw new Error('An error occurred while fetching your pets.');
@@ -27,7 +27,7 @@ const UserPostPets = () => {
     } finally {
       setLoading(false);
     }
-  }, [currentUserId]); // ✅ Only re-create fetchRequests if currentUserId changes
+  }, [currentUserId]); 
 
   useEffect(() => {
     fetchRequests();
@@ -45,7 +45,7 @@ const UserPostPets = () => {
             updateCards={fetchRequests}
             deleteBtnText="Delete"
             approveBtn={false}
-            showEditButton={true} // ❌ No approval needed here, just show the owner's pets
+            showEditButton={true} 
           />
         ))
       ) : (

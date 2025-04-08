@@ -8,8 +8,8 @@ const Form = ({ form,pet, updateCards, deleteBtnText, approveBtn, currentUserId 
 
       console.log("📡 Sending API request:", {
         action,
-        petId: pet._id,  // ✅ Ensure this exists
-        requestId: form._id  // ✅ Ensure this exists
+        petId: pet._id, 
+        requestId: form._id 
     });
 
     

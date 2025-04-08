@@ -14,7 +14,7 @@ const ReportedUsers = () => {
       console.log("✅ Fetched Reported Users:", data); // Debugging log
       setReportedUsers(data);
     } catch (error) {
-      console.error("🚨 Error fetching reported users:", error);
+      console.error("Error fetching reported users:", error);
     } finally {
       setLoading(false);
     }
@@ -32,14 +32,14 @@ const ReportedUsers = () => {
       ) : reportedUsers.length > 0 ? (
         reportedUsers.map((report) => (
           <div key={report._id} className="report-card">
-            {/* ✅ Ensure images are displayed correctly */}
+            {/* Ensure images are displayed correctly */}
             {report.image ? (
               <img
                 src={`http://localhost:4000/Assets/${report.image}`}
                 alt="Reported Listing"
                 className="reported-user-image"
                 style={{ width: "100px", height: "100px", objectFit: "cover", borderRadius: "5px" }}
-                onError={(e) => { e.target.src = "http://localhost:4000/uploads/default.png"; }} // ✅ Fallback image
+                onError={(e) => { e.target.src = "http://localhost:4000/uploads/default.png"; }} 
               />
             ) : (
               <p>No Image Available</p> // Show message if no image is uploaded

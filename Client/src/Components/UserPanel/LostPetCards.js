@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { formatDistanceToNow } from "date-fns";
-import "../../Styles/UserLostPetCards.css"; // ✅ Reuse styles
+import "../../Styles/UserLostPetCards.css"; 
 
 const LostPetCards = (props) => {
   const [showDescriptionPopup, setShowDescriptionPopup] = useState(false);
@@ -142,12 +142,12 @@ const LostPetCards = (props) => {
           </div>
         )}
 
-        {/* ✅ Buttons for Owner (Always Visible) */}
+        {/* Buttons for Owner (Always Visible) */}
         {isOwner && (
           <div className="app-rej-btn" style={{ display: "flex", gap: "10px" }}>
-            {/* ✅ Edit Button */}
+            {/* Edit Button */}
             {props.showEditButton && <button onClick={() => setIsEditing(true)}>Edit</button>}
-            {/* ✅ Delete Button */}
+            {/* Delete Button */}
             <button onClick={handleDelete} disabled={isDeleting}>
               {isDeleting ? <p>Deleting...</p> : props.deleteBtnText}
             </button>

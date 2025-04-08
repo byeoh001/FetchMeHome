@@ -54,11 +54,11 @@ class OllamaChat {
 
         let personalityType = await this.ask(prompt);
 
-        console.log("🔹 Raw Personality Response:", personalityType);  // ✅ Debugging
+        console.log("Raw Personality Response:", personalityType);  
 
         //  Ensure the response is valid
         if (!personalityType || !personalityType.includes(",")) {
-            console.error("⚠️ Invalid response from Ollama:", personalityType);
+            console.error("Invalid response from Ollama:", personalityType);
             return "Unknown, Please, Retry";
         }
 
@@ -66,7 +66,7 @@ class OllamaChat {
         let words = personalityType.split(",").map(word => word.trim());
         
         if (words.length < 3) {
-            console.error("⚠️ Less than 3 words returned:", words);
+            console.error("Less than 3 words returned:", words);
             return "Unknown, Please, Retry";
         }
 

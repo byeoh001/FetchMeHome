@@ -27,11 +27,11 @@ const UserHistory = () => {
     } finally {
       setLoading(false);
     }
-  }, [currentUserId]); // ✅ Depend only on `currentUserId`
+  }, [currentUserId]); // Depend only on currentUserId
 
   useEffect(() => {
     fetchAdoptedPets();
-  }, [fetchAdoptedPets]); // ✅ Fix: No warning anymore!
+  }, [fetchAdoptedPets]); 
 
   return (
     <div className='pet-container'>
@@ -41,7 +41,7 @@ const UserHistory = () => {
         adoptedPets.map((request) => (
           <PetCards
             key={request._id}
-            pet={request.petId} // Ensure pet details are used
+            pet={request.petId} 
             updateCards={fetchAdoptedPets}
             deleteBtnText={null}
             approveBtn={false}

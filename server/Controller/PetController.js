@@ -160,8 +160,8 @@ const requestAdoption = async (req, res) => {
 
     const adoptionRequest = await AdoptForm.create({
       petId,
-      adopterId: userId, //  Who is adopting?
-      ownerId: pet.postedBy._id, //  Who owns the pet?
+      adopterId: userId, 
+      ownerId: pet.postedBy._id, 
       email, 
       phoneNo, 
       livingSituation, 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LostPetsViewer from "./LostPetsViewer"; // ✅ Using the correct viewer
-
+import LostPetsViewer from "./LostPetsViewer"; 
 const LostPets = () => {
   const [filter, setFilter] = useState("all");
   const [lostPetsData, setLostPetsData] = useState([]);

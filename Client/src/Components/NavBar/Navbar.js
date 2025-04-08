@@ -7,8 +7,8 @@ const Navbar = () => {
 
   const navigate = useNavigate();
   const isLoggedIn = !!localStorage.getItem("token");
-  const user = JSON.parse(localStorage.getItem("user")); // ✅ Get user data
-  const isAdmin = user?.isAdmin; // ✅ Check if user is an admin
+  const user = JSON.parse(localStorage.getItem("user")); // Get user data
+  const isAdmin = user?.isAdmin; // Check if user is an admin
 
 
   const [adoptDropdown, setAdoptDropdown] = useState(false);

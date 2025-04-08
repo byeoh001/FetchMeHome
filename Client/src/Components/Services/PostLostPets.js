@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import lostPet from "./images/lostcat.jpg";
-import "../../Styles/PostLost.css"; // Update with actual image path
-import LocationPicker from "./LocationPicker"; // ✅ Import LocationPicker component
+import "../../Styles/PostLost.css"; 
+import LocationPicker from "./LocationPicker"; 
 
 const PostLostPets = () => {
   const [name, setName] = useState("");
   const [petAge, setPetAge] = useState("");
-  const [lastSeenLocation, setLastSeenLocation] = useState(""); // ✅ This will be updated by LocationPicker
+  const [lastSeenLocation, setLastSeenLocation] = useState(""); 
   const [description, setDescription] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -46,12 +46,12 @@ const PostLostPets = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const userId = localStorage.getItem("userId"); // ✅ Ensure user is logged in
+    const userId = localStorage.getItem("userId"); //  Ensure user is logged in
 
     if (
       !name ||
       !petAge ||
-      !lastSeenLocation || // ✅ Ensure Last Seen Location is selected
+      !lastSeenLocation || 
       !description ||
       !email ||
       !phone ||
@@ -72,7 +72,7 @@ const PostLostPets = () => {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("petAge", petAge);
-    formData.append("lastSeenLocation", lastSeenLocation); // ✅ Last seen location from map
+    formData.append("lastSeenLocation", lastSeenLocation); 
     formData.append("description", description);
     formData.append("email", email);
     formData.append("phone", phone);
@@ -99,7 +99,7 @@ const PostLostPets = () => {
       setFormError(false);
       setName("");
       setPetAge("");
-      setLastSeenLocation(""); // ✅ Reset last seen location
+      setLastSeenLocation(""); 
       setDescription("");
       setEmail("");
       setPhone("");
@@ -140,7 +140,7 @@ const PostLostPets = () => {
         {/* ✅ Integrated Location Picker for Last Seen */}
         <div className="input-box">
           <label>Last Seen:</label>
-          <LocationPicker setLastSeenLocation={setLastSeenLocation} /> {/* ✅ Pass state setter */}
+          <LocationPicker setLastSeenLocation={setLastSeenLocation} /> 
         </div>
 
         <div className="filter-selection-service">

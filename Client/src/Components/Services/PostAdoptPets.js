@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import postPet from "./images/postPet.png";
 import "../../Styles/PostAdopt.css";
-import LocationPicker from "./LocationPicker"; // ✅ Import LocationPicker component
+import LocationPicker from "./LocationPicker"; 
 
 const PostAdoptPets = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
-  const [area, setArea] = useState(""); // ✅ Updated: Will be set by LocationPicker
+  const [area, setArea] = useState(""); 
   const [justification, setJustification] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -56,7 +56,7 @@ const PostAdoptPets = () => {
     if (
       !name ||
       !age ||
-      !area || // ✅ Ensure area is selected
+      !area || 
       !justification ||
       !email ||
       !phone ||
@@ -78,7 +78,7 @@ const PostAdoptPets = () => {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("age", age);
-    formData.append("area", area); // ✅ Area is now coming from LocationPicker
+    formData.append("area", area); 
     formData.append("justification", justification);
     formData.append("email", email);
     formData.append("phone", phone);
@@ -105,7 +105,7 @@ const PostAdoptPets = () => {
       setFormError(false);
       setName("");
       setAge("");
-      setArea(""); // ✅ Reset area after submission
+      setArea(""); 
       setJustification("");
       setEmail("");
       setPhone("");
@@ -143,10 +143,10 @@ const PostAdoptPets = () => {
           </label>
         </div>
 
-        {/* ✅ Integrated Location Picker for Area */}
+        {/* Integrated Location Picker for Area */}
         <div className="input-box">
           <label>Location:</label>
-          <LocationPicker setLastSeenLocation={setArea} /> {/* ✅ Pass setter for Area */}
+          <LocationPicker setLastSeenLocation={setArea} /> 
         </div>
 
         <div className="filter-selection-service">

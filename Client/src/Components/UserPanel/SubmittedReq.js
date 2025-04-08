@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../Styles/SubmittedReq.css"; // ✅ Styling
+import "../../Styles/SubmittedReq.css"; 
 
 const SubmittedReq = () => {
   const [submittedRequests, setSubmittedRequests] = useState([]);
@@ -12,10 +12,10 @@ const SubmittedReq = () => {
         if (!response.ok) throw new Error("Failed to fetch submitted requests");
 
         const data = await response.json();
-        console.log("✅ Fetched Submitted Requests:", data);
+        console.log("Fetched Submitted Requests:", data);
         setSubmittedRequests(data);
       } catch (error) {
-        console.error("❌ Error fetching submitted requests:", error);
+        console.error("Error fetching submitted requests:", error);
       }
     };
 
@@ -26,7 +26,7 @@ const SubmittedReq = () => {
     <div className="req-container">
       <h2 className="section-title">My Submitted Requests</h2>
       
-      {/* ✅ Show requests if any exist */}
+      {/* Show requests if any exist */}
       <div className="requests-grid">
         {submittedRequests.length > 0 ? (
           submittedRequests.map((req) => (

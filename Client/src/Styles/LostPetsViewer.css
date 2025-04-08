@@ -1,4 +1,4 @@
-/* 🔹 Centering the Popup Properly */
+/* Centering the Popup Properly */
 .popup {
     position: fixed;
     top: 50%;
@@ -13,7 +13,7 @@
     z-index: 1000;
 }
 
-/* 🔹 Ensure Popup Content is Well Formatted */
+/* Ensure Popup Content is Well Formatted */
 .popup-content {
     text-align: center;
     padding: 20px;
@@ -22,7 +22,7 @@
     align-items: center;
 }
 
-/* 🔹 Input Fields Styling */
+/* Input Fields Styling */
 .popup-content input {
     width: 90%; /* Keep within bounds */
     padding: 10px;
@@ -32,7 +32,7 @@
     font-size: 14px;
 }
 
-/* 🔹 Submit Button */
+/* Submit Button */
 .popup-content button {
     width: 100%;
     background-color: var(--orange);
@@ -49,7 +49,7 @@
     background-color: var(--hoverorange);
 }
 
-/* 🔹 Close Button */
+/* Close Button */
 .close-btn {
     background-color: red;
     color: white;
@@ -64,13 +64,13 @@
     margin-left: 5px;
 }
 
-/* 🔹 Prevent Report UI Overflowing */
+/* Prevent Report UI Overflowing */
 .popup-content {
     max-height: 400px;
     overflow-y: auto; /* Scroll if needed */
 }
 
-/* 🔹 Ensure Pet Card Layout is Correct */
+/* Ensure Pet Card Layout is Correct */
 .pet-view-card {
     display: flex;
     flex-direction: column;
@@ -79,14 +79,14 @@
     overflow: hidden;
 }
 
-/* 🔹 Ensure Images are Displayed Correctly */
+/* Ensure Images are Displayed Correctly */
 .pet-card-pic img {
     width: 310px;
     height: 180px;
     object-fit: cover;
 }
 
-/* 🔹 Show Interest (Upload Image) Button */
+/* Show Interest (Upload Image) Button */
 .show-interest-btn {
     display: flex;
     justify-content: center;

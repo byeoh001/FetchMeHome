@@ -1,4 +1,4 @@
-/* 🔶 Styling for Edit Form Fields */
+/* Styling for Edit Form Fields */
 .pets-card-details input,
 .pets-card-details textarea {
   width: 100%; /* Full width */
@@ -11,14 +11,14 @@
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-/* 🔶 Focus effect for inputs */
+/* Focus effect for inputs */
 .pets-card-details input:focus,
 .pets-card-details textarea:focus {
   border-color: #ff7200; /* Darker orange on focus */
   outline: none;
 }
 
-/* 🔶 Buttons inside Edit Form */
+/* Buttons inside Edit Form */
 .pets-card-details button {
   background-color: #ff8c00; /* Orange */
   color: white;
@@ -32,7 +32,7 @@
   margin-top: 10px;
 }
 
-/* 🔶 Save Button - Primary */
+/* Save Button - Primary */
 .pets-card-details button:first-child {
   background-color: #ff8c00;
 }
@@ -41,7 +41,7 @@
   background-color: #ff7200;
 }
 
-/* 🔶 Cancel Button - Gray */
+/* Cancel Button - Gray */
 .pets-card-details button:last-child {
   background-color: #ccc; /* Gray */
   color: black;
@@ -52,7 +52,7 @@
   background-color: #bbb;
 }
 
-/* 🔶 Layout: Align buttons horizontally */
+/* Layout: Align buttons horizontally */
 .pets-card-details {
   display: flex;
   flex-direction: column;

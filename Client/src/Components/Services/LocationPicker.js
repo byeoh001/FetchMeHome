@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import "../../Styles/LocationPicker.css"; // Ensure to create this CSS file for styling
+import "../../Styles/LocationPicker.css"; 
 
-const API_KEY = process.env.API_KEY; // Replace with your actual API key
+const API_KEY = process.env.API_KEY; 
 
 const LocationPicker = ({ setLastSeenLocation }) => {
     const [selectedLocation, setSelectedLocation] = useState(null);

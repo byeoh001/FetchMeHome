@@ -13,7 +13,7 @@
 //       const data = await response.json();
 //       setReportedListings(data);
 //     } catch (error) {
-//       console.error("🚨 Error fetching reported listings:", error);
+//       console.error("Error fetching reported listings:", error);
 //     } finally {
 //       setLoading(false);
 //     }

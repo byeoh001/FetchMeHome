@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "../../Styles/UserLostRequests.css"; // ✅ Reuse styling
+import "../../Styles/UserLostRequests.css";
 
 const LostPetRequests = () => {
   const [requests, setRequests] = useState([]);
-  const [reportingFinderId, setReportingFinderId] = useState(null); // ✅ Track finder being reported
-  const [selectedImage, setSelectedImage] = useState(null); // ✅ Track selected image
+  const [reportingFinderId, setReportingFinderId] = useState(null); 
+  const [selectedImage, setSelectedImage] = useState(null); 
   const currentUserId = localStorage.getItem("userId");
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const LostPetRequests = () => {
         if (!response.ok) throw new Error("Failed to fetch reports");
 
         const data = await response.json();
-        console.log("📢 Rendered Requests:", data);
+        console.log("Rendered Requests:", data);
         setRequests(data);
       } catch (error) {
         console.error("Error fetching lost pet requests:", error);
@@ -24,7 +24,7 @@ const LostPetRequests = () => {
     fetchRequests();
   }, [currentUserId]);
 
-  // ✅ Handle Accept Request
+  // Handle Accept Request
   const handleAcceptRequest = async (requestId, petId) => {
     try {
       const response = await fetch(`http://localhost:4000/acceptLostPetRequest/${requestId}`, {
@@ -53,7 +53,7 @@ const LostPetRequests = () => {
     }
   };
 
-  // ✅ Handle Delete Request
+  // Handle Delete Request
   const handleDelete = async (requestId) => {
     try {
       const response = await fetch(`http://localhost:4000/deleteLostPetRequest/${requestId}`, {
@@ -65,26 +65,26 @@ const LostPetRequests = () => {
       }
 
       alert("Request deleted successfully!");
-      setRequests((prevRequests) => prevRequests.filter((req) => req._id !== requestId)); // ✅ Remove from UI
+      setRequests((prevRequests) => prevRequests.filter((req) => req._id !== requestId)); 
     } catch (error) {
       console.error("Error deleting request:", error);
       alert("Failed to delete request.");
     }
   };
 
-  // ✅ Handle Select Image for Report
+  // Handle Select Image for Report
   const handleSelectImage = (event) => {
     const file = event.target.files[0];
     if (file) {
       setSelectedImage(file);
-      console.log("📸 Selected Image:", file);
+      console.log("Selected Image:", file);
 
-      // ✅ Prompt user for justification after selecting an image
+      // Prompt user for justification after selecting an image
       setTimeout(() => {
         const justification = prompt("Why are you reporting this user? (Required)");
         if (!justification || !justification.trim()) {
           alert("Please provide a justification.");
-          setSelectedImage(null); // Reset image if canceled
+          setSelectedImage(null); 
           return;
         }
         handleSubmitReport(justification);
@@ -92,7 +92,7 @@ const LostPetRequests = () => {
     }
   };
 
-  // ✅ Handle Submit Report
+  // Handle Submit Report
   const handleSubmitReport = async () => {
     if (!reportingFinderId || !selectedImage) {
         alert("Error: Finder ID or Image is missing.");
@@ -105,8 +105,8 @@ const LostPetRequests = () => {
         return;
     }
 
-    console.log("📢 Reporting user:", reportingFinderId, "by", currentUserId);
-    console.log("📸 Selected Image:", selectedImage);
+    console.log("Reporting user:", reportingFinderId, "by", currentUserId);
+    console.log("Selected Image:", selectedImage);
 
     const formData = new FormData();
     formData.append("finderId", reportingFinderId);
@@ -114,15 +114,15 @@ const LostPetRequests = () => {
     formData.append("justification", justification);
     formData.append("image", selectedImage);
 
-    console.log("📦 FormData being sent:");
+    console.log("FormData being sent:");
     for (let pair of formData.entries()) {
-        console.log(`🔹 ${pair[0]}:`, pair[1]);
+        console.log(`${pair[0]}:`, pair[1]);
     }
 
     try {
         const response = await fetch("http://localhost:4000/reportUser", {
             method: "POST",
-            body: formData, // ✅ Send as FormData (not JSON!)
+            body: formData, // Send as FormData
         });
 
         if (!response.ok) {
@@ -133,7 +133,7 @@ const LostPetRequests = () => {
         setSelectedImage(null);
         setReportingFinderId(null);
     } catch (error) {
-        console.error("🔥 Error reporting user:", error);
+        console.error("Error reporting user:", error);
         alert("Failed to report user.");
     }
 };
@@ -142,7 +142,7 @@ const LostPetRequests = () => {
 
   return (
     <div className="req-container">
-      {/* ✅ PENDING REQUESTS */}
+      {/* PENDING REQUESTS */}
       <h2>Pending Requests</h2>
       <div className="requests-grid">
         {requests.filter((req) => req.status === "Pending").length > 0 ? (
@@ -162,7 +162,7 @@ const LostPetRequests = () => {
                 <button className="report-user-btn" onClick={() => setReportingFinderId(req.finderId)}>Report User</button>
               </div>
 
-              {/* ✅ Show file input ONLY if this pet is being reported */}
+              {/* Show file input ONLY if this pet is being reported */}
               {reportingFinderId === req.finderId && (
                 <div className="image-upload-section">
                   <label><b>Upload an Image:</b></label>
@@ -180,7 +180,7 @@ const LostPetRequests = () => {
         )}
       </div>
 
-      {/* ✅ ACCEPTED REQUESTS */}
+      {/* ACCEPTED REQUESTS */}
       <h2>Accepted Requests</h2>
       <div className="requests-grid">
         {requests.filter((req) => req.status === "Accepted").length > 0 ? (

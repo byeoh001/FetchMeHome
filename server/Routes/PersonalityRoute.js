@@ -71,8 +71,4 @@ router.get("/suggest-breeds", async (req, res) => {
 });
 
 
-
-
-
-
 module.exports = router;

@@ -20,7 +20,7 @@ function AdoptForm(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("📩 Submitting Adoption Request...");
+    console.log("Submitting Adoption Request...");
     setEmailError(false);
 
     if (
@@ -40,10 +40,10 @@ function AdoptForm(props) {
     }
 
     const userId = localStorage.getItem("userId"); 
-    console.log("👤 Logged-in User ID:", userId);// ✅ Get logged-in user ID
+    console.log("👤 Logged-in User ID:", userId);// Get logged-in user ID
 
     if (!userId) {
-      console.error("❌ User is not logged in!");
+      console.error("User is not logged in!");
       alert("You must be logged in to request an adoption.");
       return;
     }
@@ -57,7 +57,7 @@ function AdoptForm(props) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          userId, // ✅ Include adopter ID
+          userId, // Include adopter ID
           email,
           phoneNo,
           livingSituation,
@@ -67,13 +67,13 @@ function AdoptForm(props) {
         })
       });
 
-      console.log("📩 Server Response:", response);
+      console.log("Server Response:", response);
 
       if (!response.ok) {
         setErrPopup(true);
         return;
       } else {
-        console.log("✅ Adoption Request Submitted Successfully!");
+        console.log("Adoption Request Submitted Successfully!");
         setSuccPopup(true);
       }
     }
