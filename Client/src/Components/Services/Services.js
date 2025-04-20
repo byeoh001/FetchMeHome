@@ -3,6 +3,7 @@ import PostAdoptPets from './PostAdoptPets';
 import ViewAdoptSection from './ViewAdoptSection';
 import ViewFindSection from './ViewFindSection';
 import PostLostPets from './PostLostPets';
+import "../../Styles/Services.css"; 
 
 const Services = () => {
   const user = localStorage.getItem("token"); // Check if user is logged in
@@ -15,6 +16,7 @@ const Services = () => {
           <div className="post-pet">
             <PostAdoptPets />
           </div>
+          <div className="divider-line" />
           <div className="post-lost-pet">
             <PostLostPets />
           </div>

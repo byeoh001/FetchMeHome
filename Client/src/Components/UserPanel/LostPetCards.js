@@ -57,7 +57,7 @@ const LostPetCards = (props) => {
       }
 
       setIsEditing(false);
-      props.updateCards(); // ✅ Refresh UI
+      props.updateCards(); 
     } catch (err) {
       console.error("Error updating lost pet:", err);
       setShowErrorPopup(true);
@@ -144,15 +144,18 @@ const LostPetCards = (props) => {
 
         {/* Buttons for Owner (Always Visible) */}
         {isOwner && (
-          <div className="app-rej-btn" style={{ display: "flex", gap: "10px" }}>
-            {/* Edit Button */}
-            {props.showEditButton && <button onClick={() => setIsEditing(true)}>Edit</button>}
-            {/* Delete Button */}
-            <button onClick={handleDelete} disabled={isDeleting}>
-              {isDeleting ? <p>Deleting...</p> : props.deleteBtnText}
+          <div className="app-rej-btn">
+            {props.showEditButton && (
+              <button className="edit-request-btn" onClick={() => setIsEditing(true)}>
+                Edit
+              </button>
+            )}
+            <button className="delete-request-btn" onClick={handleDelete} disabled={isDeleting}>
+              {isDeleting ? "Deleting..." : props.deleteBtnText}
             </button>
           </div>
         )}
+
 
         {showDescriptionPopup && (
           <div className="popup">

@@ -1,7 +1,5 @@
-
 const AdoptForm = require('../Model/AdoptFormModel')
-const express = require('express')
-
+const Pet = require("../Model/PetModel");
 
 const saveForm = async (req, res) => {
     try {
@@ -45,30 +43,48 @@ const saveForm = async (req, res) => {
     }
 };
 
-
-const getAdoptForms = async (req, res) => {
+const getForms = async (req, res) => {
     try {
-        const { userId } = req.params; // Get user ID from request URL
-
-        if (!userId) {
-            return res.status(400).json({ error: "User ID is required." });
-        }
-
-        // Fetch all adoption requests where the logged-in user is the pet owner
-        const forms = await AdoptForm.find({ ownerId: userId }).populate('adopterId', 'email name');
-
-        if (forms.length === 0) {
-            return res.status(404).json({ error: "No adoption requests found for your pets." });
-        }
-
-        res.status(200).json(forms);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
+      const { userId } = req.params;
+  
+      // Find pets owned by the user
+      const userPets = await Pet.find({ postedBy: userId }).select("_id");
+      const petIds = userPets.map(pet => pet._id);
+  
+      // Get adoption requests for those pets
+      const forms = await AdoptForm.find({ petId: { $in: petIds } }).sort({ createdAt: -1 });
+  
+      res.status(200).json(forms);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
     }
 };
 
-
-// }
+const mySubmittedAdoptionRequests = async (req, res) => {
+    try {
+      const { adopterId } = req.params;
+  
+      if (!adopterId) {
+        return res.status(400).json({ error: "Adopter ID is required" });
+      }
+  
+      const adoptionRequests = await AdoptForm.find({ adopterId })
+        .populate({
+          path: "petId",
+          select: "name type filename", // You can include more fields like age, image
+        })
+        .populate({
+          path: "ownerId",
+          select: "email phone", // Optional: assuming you store pet owner's contact in user model
+        })
+        .sort({ createdAt: -1 });
+  
+      res.status(200).json(adoptionRequests);
+    } catch (error) {
+      console.error("Error fetching submitted adoption requests:", error);
+      res.status(500).json({ error: "Failed to fetch submitted adoption requests" });
+    }
+};  
 
 const deleteForm = async (req, res) => {
     try {
@@ -86,6 +102,41 @@ const deleteForm = async (req, res) => {
 
         await AdoptForm.findByIdAndDelete(id);
         res.status(200).json({ message: "Form deleted successfully" });
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+};
+
+const deleteAllRequests = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await AdoptForm.deleteMany({ petId: id });
+        if (result.deletedCount === 0) {
+            console.log("Forms not found");
+            return res.status(404).json({ error: 'Forms not found' });
+        }
+        res.status(200).json({ message: 'Forms deleted successfully' });
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
+const getAdoptForms = async (req, res) => {
+    try {
+        const { userId } = req.params; // Get user ID from request URL
+
+        if (!userId) {
+            return res.status(400).json({ error: "User ID is required." });
+        }
+
+        // Fetch all adoption requests where the logged-in user is the pet owner
+        const forms = await AdoptForm.find({ ownerId: userId }).populate('adopterId', 'email name');
+
+        if (forms.length === 0) {
+            return res.status(404).json({ error: "No adoption requests found for your pets." });
+        }
+
+        res.status(200).json(forms);
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
@@ -116,27 +167,12 @@ const handleAdoptionRequest = async (req, res) => {
     }
 };
 
-
-
-
-const deleteAllRequests = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const result = await AdoptForm.deleteMany({ petId: id });
-        if (result.deletedCount === 0) {
-            console.log("Forms not found");
-            return res.status(404).json({ error: 'Forms not found' });
-        }
-        res.status(200).json({ message: 'Forms deleted successfully' });
-    } catch (error) {
-        res.status(400).json({ message: error.message });
-    }
-};
-
 module.exports = {
     saveForm,
-    getAdoptForms,
+    getForms,
+    mySubmittedAdoptionRequests,
     deleteForm,
     deleteAllRequests,
+    getAdoptForms,
     handleAdoptionRequest
 }
