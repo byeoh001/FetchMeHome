@@ -64,33 +64,103 @@
   margin-left: 80px;
 }
 
-.edit-request-btn {
-  background-color: #28a745;
+/* Enhanced Popup Styles */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 380px;
+  padding: 25px;
+  text-align: center;
+  animation: popup-fade-in 0.3s ease-out;
+}
+
+@keyframes popup-fade-in {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.popup-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+  color: #ff8c00;
+}
+
+.popup-content h4 {
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/* Enhanced Success Popup Styles */
+.success-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  width: 400px;
+  padding: 30px 25px;
+  text-align: center;
+  z-index: 1100;
+}
+
+.success-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.success-icon {
+  font-size: 50px;
+  color: #ff8c00;
+  margin-bottom: 15px;
+}
+
+.success-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.success-message {
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: #555;
+}
+
+.success-close-btn {
+  background-color: #ff8c00;
   color: white;
-  padding: 10px 15px;
   border: none;
+  padding: 10px 30px;
+  font-size: 16px;
+  font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
-  transition: 0.2s ease-in-out;
+  transition: all 0.3s ease;
 }
 
-.edit-request-btn:hover {
-  background-color: #218838;
-}
-
-/* Delete Button - reuse if already defined */
-.delete-request-btn {
-  background-color: #dc3545;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: 0.2s ease-in-out;
-}
-
-.delete-request-btn:hover {
-  background-color: #c82333;
+.success-close-btn:hover {
+  background-color: #ff7200;
 }

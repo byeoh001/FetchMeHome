@@ -48,7 +48,7 @@ const UserHistory = () => {
           />
         ))
       ) : (
-        <p>No Adopted History available</p>
+        <p style={{ textAlign: "center", fontStyle: "italic" }}>No Adopted History Available available</p>
       )}
     </div>
   );

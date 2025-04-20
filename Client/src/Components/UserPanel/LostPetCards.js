@@ -57,7 +57,7 @@ const LostPetCards = (props) => {
       }
 
       setIsEditing(false);
-      props.updateCards(); 
+      props.updateCards(); //
     } catch (err) {
       console.error("Error updating lost pet:", err);
       setShowErrorPopup(true);
@@ -65,6 +65,10 @@ const LostPetCards = (props) => {
   };
 
   const handleDelete = async () => {
+    
+    const confirmed = window.confirm("Are you sure you want to delete this pet listing?");
+    if (!confirmed) return;
+
     setIsDeleting(true);
     try {
       const response = await fetch(`http://localhost:4000/deleteLostPet/${props.pet._id}`, {
@@ -138,24 +142,21 @@ const LostPetCards = (props) => {
                 )}
               </span>
             </p>
-            <p>{formatTimeAgo(props.pet.updatedAt)}</p>
+            <p>{formatTimeAgo(props.pet.createdAt)}</p>
           </div>
         )}
 
         {/* Buttons for Owner (Always Visible) */}
         {isOwner && (
-          <div className="app-rej-btn">
-            {props.showEditButton && (
-              <button className="edit-request-btn" onClick={() => setIsEditing(true)}>
-                Edit
-              </button>
-            )}
-            <button className="delete-request-btn" onClick={handleDelete} disabled={isDeleting}>
-              {isDeleting ? "Deleting..." : props.deleteBtnText}
+          <div className="app-rej-btn" style={{ display: "flex", gap: "10px" }}>
+            {/* Edit Button */}
+            {props.showEditButton && <button onClick={() => setIsEditing(true)}>Edit</button>}
+            {/* Delete Button */}
+            <button onClick={handleDelete} disabled={isDeleting}>
+              {isDeleting ? <p>Deleting...</p> : props.deleteBtnText}
             </button>
           </div>
         )}
-
 
         {showDescriptionPopup && (
           <div className="popup">
@@ -181,17 +182,22 @@ const LostPetCards = (props) => {
         )}
 
         {showDeletedSuccess && (
-          <div className="popup">
-            <div className="popup-content">
-              <p>Deleted Successfully from Database...</p>
+          <>
+          <div className='success-popup-overlay'></div>
+          <div className='success-popup'>
+            <div className="success-icon">
+              <i className="fa fa-check-circle"></i>
             </div>
+            <div className="success-title">Success!</div>
+            <div className="success-message">Lost Pet Post has been deleted successfully.</div>
             <button onClick={() => {
-              setShowDeletedSuccess(!showDeletedSuccess);
+              setShowDeletedSuccess(false);
               props.updateCards();
-            }} className="close-btn">
-              Close <i className="fa fa-times"></i>
+            }} className='success-close-btn'>
+              Close
             </button>
           </div>
+        </>
         )}
       </div>
     </div>

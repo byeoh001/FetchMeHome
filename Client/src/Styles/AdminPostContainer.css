@@ -1,0 +1,283 @@
+/* AdminPostContainer.css */
+.admin-post-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    position: relative;
+    border-left: 4px solid #fbc256;
+  }
+  
+  .admin-post-container:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    transition: all 0.3s ease;
+  }
+  
+  .admin-post-image {
+    flex: 0 0 220px;
+    position: relative;
+  }
+  
+  .admin-post-image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+  
+  .admin-post-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #fbc256;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .admin-post-details {
+    flex: 1;
+    padding: 20px;
+    min-width: 300px;
+  }
+  
+  .admin-post-details h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+  }
+  
+  .admin-post-details p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .post-description {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    max-height: 100px;
+    overflow-y: auto;
+  }
+  
+  .admin-post-actions {
+    flex: 0 0 200px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .admin-delete-btn,
+  .admin-ban-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .admin-delete-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .admin-delete-btn:hover:not(:disabled) {
+    background-color: #c82333;
+  }
+  
+  .admin-ban-btn {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  .admin-ban-btn:hover:not(:disabled) {
+    background-color: #23272b;
+  }
+  
+  .admin-delete-btn:disabled,
+  .admin-ban-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  /* Confirmation Modal */
+  .admin-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .admin-modal {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: modal-fade-in 0.3s ease;
+  }
+  
+  .admin-modal h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .admin-modal p {
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  .admin-modal-warning {
+    color: #dc3545 !important;
+    font-weight: bold;
+  }
+  
+  .admin-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .admin-modal-cancel,
+  .admin-modal-confirm {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .admin-modal-cancel {
+    background-color: #e9ecef;
+    color: #495057;
+    border: none;
+  }
+  
+  .admin-modal-cancel:hover {
+    background-color: #dde2e6;
+  }
+  
+  .admin-modal-confirm {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+  }
+  
+  .admin-modal-confirm:hover {
+    background-color: #c82333;
+  }
+  
+  /* Error and Success Messages */
+  .admin-error-message,
+  .admin-success-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    animation: slide-in 0.3s ease;
+  }
+  
+  .admin-error-message {
+    background-color: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+  }
+  
+  .admin-success-message {
+    background-color: #d4edda;
+    border-left: 4px solid #28a745;
+    color: #155724;
+  }
+  
+  .admin-error-message p,
+  .admin-success-message p {
+    margin: 0;
+    font-weight: 500;
+  }
+  
+  .admin-error-message button,
+  .admin-success-message button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 0;
+    text-decoration: underline;
+  }
+  
+  /* Animations */
+  @keyframes modal-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .admin-post-container {
+      flex-direction: column;
+    }
+    
+    .admin-post-image {
+      flex: 0 0 auto;
+      height: 200px;
+    }
+    
+    .admin-post-actions {
+      flex: 0 0 auto;
+      width: 100%;
+      flex-direction: row;
+    }
+    
+    .admin-post-actions button {
+      flex: 1;
+    }
+  }

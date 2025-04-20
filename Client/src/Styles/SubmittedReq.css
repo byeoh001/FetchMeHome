@@ -1,97 +1,66 @@
-.req-container {
-  padding: 30px 40px;
-}
-
-/* Hide main title if needed */
-.no-title .main-title {
-  display: none;
-}
-
-/* Two-column layout */
-.requests-section-wrapper {
+.submitted-req-wrapper {
   display: flex;
+  gap: 30px;
+  padding: 30px;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
   flex-wrap: wrap;
 }
 
-/* One column */
-.submitted-column {
+.request-section {
   flex: 1;
-  min-width: 360px;
-}
-
-/* Section heading */
-.sub-heading {
-  font-size: 20px;
-  font-weight: 600;
-  color: #f77f00;
-  border-bottom: 2px solid #fca311;
-  padding-bottom: 5px;
-  margin-bottom: 20px;
+  min-width: 45%;
   text-align: center;
 }
 
-/* Cards grid */
-.requests-grid {
+.request-section h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ffa500;
+  padding-bottom: 5px;
+  color: #333;
+}
+
+.request-card {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  gap: 15px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Request card */
-.pet-view-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  width: 300px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  transition: transform 0.2s ease;
-}
-
-.pet-view-card:hover {
-  transform: translateY(-4px);
-}
-
-/* Image */
-.pet-card-pic img {
-  width: 100%;
-  height: 200px;
+.request-card img {
+  width: 90px;
+  height: 90px;
   object-fit: cover;
   border-radius: 5px;
 }
 
-/* Text content */
-.pet-card-details {
-  margin-top: 10px;
-  font-size: 15px;
-  line-height: 1.6;
-  color: #333;
+.request-card div {
+  flex: 1;
 }
 
-.pet-card-details b {
-  color: #f77f00;
-}
-
-/* Status colors */
-.accepted-status {
-  color: green;
+.status {
   font-weight: bold;
 }
 
-.pending-status {
+.status.pending {
   color: orange;
-  font-weight: bold;
 }
 
-/* Fallback text */
+.status.accepted,
+.status.approved {
+  color: green;
+}
+
+.status.rejected {
+  color: red;
+}
+
 .no-requests {
+  color: #777;
   font-style: italic;
-  color: #999;
-  font-size: 15px;
-  text-align: center;
-  width: 100%;
+  margin-top: 10px;
 }

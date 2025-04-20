@@ -49,7 +49,7 @@ const UserPostPets = () => {
           />
         ))
       ) : (
-        <p>No pets posted yet.</p>
+        <p style={{ textAlign: "center", fontStyle: "italic" }}>No pets posted yet.</p>
       )}
     </div>
   );

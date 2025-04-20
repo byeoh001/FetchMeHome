@@ -49,7 +49,7 @@ const UserApproved = () => {
           />
         ))
       ) : (
-        <p>No Approved Pets available</p>
+        <p style={{ textAlign: "center", fontStyle: "italic" }}>No Approved Pets available</p>
       )}
     </div>
   );

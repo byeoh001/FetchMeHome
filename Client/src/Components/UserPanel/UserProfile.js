@@ -94,7 +94,7 @@ const UserProfile = () => {
         {/* Profile Form */}
         <form onSubmit={handleUpdate} className="profile-form">
           <div className="form-group">
-            <label>Email</label>
+            <label></label>
             <input
               type="email"
               value={email}
@@ -105,7 +105,7 @@ const UserProfile = () => {
           </div>
 
           <div className="form-group">
-            <label>New Password</label>
+            <label></label>
             <input
               type="password"
               value={password}

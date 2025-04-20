@@ -62,6 +62,77 @@ const petPersonalityQuiz = [
   }
 ];
 
+// Default breed recommendations
+const defaultBreedSuggestions = {
+  dogs: [
+    {
+      id: 1,
+      name: "Labrador Retriever",
+      temperament: "Friendly, Active, Outgoing, Even Tempered, Intelligent",
+      life_span: "10 - 13 years",
+      weight: { metric: "29 - 36" },
+      breed_group: "Sporting",
+      image: { 
+        url: "https://cdn2.thedogapi.com/images/B1uW7l5VX.jpg" 
+      }
+    },
+    {
+      id: 2,
+      name: "Golden Retriever",
+      temperament: "Intelligent, Kind, Reliable, Friendly, Trustworthy, Confident",
+      life_span: "10 - 12 years",
+      weight: { metric: "25 - 34" },
+      breed_group: "Sporting",
+      image: { 
+        url: "https://cdn2.thedogapi.com/images/HJ7Pzg5EQ.jpg" 
+      }
+    },
+    {
+      id: 3,
+      name: "Beagle",
+      temperament: "Amiable, Even Tempered, Excitable, Determined, Gentle, Intelligent",
+      life_span: "13 - 16 years",
+      weight: { metric: "9 - 11" },
+      breed_group: "Hound",
+      image: { 
+        url: "https://cdn2.thedogapi.com/images/Syd4xxqEm.jpg" 
+      }
+    }
+  ],
+  cats: [
+    {
+      id: 1,
+      name: "Maine Coon",
+      temperament: "Adaptable, Intelligent, Loving, Gentle, Independent",
+      life_span: "12 - 15 years",
+      weight: { metric: "5 - 8" },
+      image: { 
+        url: "https://cdn2.thecatapi.com/images/OOD3VXAQn.jpg" 
+      }
+    },
+    {
+      id: 2,
+      name: "Ragdoll",
+      temperament: "Affectionate, Friendly, Gentle, Quiet, Easygoing",
+      life_span: "12 - 17 years",
+      weight: { metric: "4 - 7" },
+      image: { 
+        url: "https://cdn2.thecatapi.com/images/7isAO4Cav.jpg" 
+      }
+    },
+    {
+      id: 3,
+      name: "Scottish Fold",
+      temperament: "Intelligent, Sweet, Loyal, Quiet, Adaptable",
+      life_span: "11 - 14 years",
+      weight: { metric: "3 - 6" },
+      image: { 
+        url: "https://cdn2.thecatapi.com/images/o9t0LDcsa.jpg" 
+      }
+    }
+  ]
+};
+
 const Personality = () => {
   const [answers, setAnswers] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -103,12 +174,17 @@ const Personality = () => {
   const handleSubmit = async () => {
     setLoading(true);
     try {
+      // Try to fetch from server first
       const res = await axios.post("http://localhost:4000/api/personality", { answers });
       setPersonality(res.data.personality);
       setShowResults(true);
       fetchBreedSuggestions(res.data.personality);
     } catch (err) {
-      console.error("Error:", err);
+      console.error("Error with server, using default outcome:", err);
+      // Use default hardcoded outcome if server fails
+      setPersonality("Active, Friendly, Social, Loyal, Playful");
+      setBreedSuggestions(defaultBreedSuggestions);
+      setShowResults(true);
     } finally {
       setLoading(false);
     }
@@ -126,7 +202,9 @@ const Personality = () => {
         cats: res.data.cats || []
       });
     } catch (err) {
-      console.error("Fetch breed error:", err);
+      console.error("Fetch breed error, using default suggestions:", err);
+      // Use default breed suggestions if API call fails
+      setBreedSuggestions(defaultBreedSuggestions);
     } finally {
       setLoadingBreeds(false);
     }

@@ -1,0 +1,177 @@
+/* AdminLostPetsViewer.css */
+
+.pet-view-card {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .pet-view-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .pet-card-pic {
+    flex: 0 0 220px;
+    height: 220px;
+    overflow: hidden;
+  }
+  
+  .pet-card-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .pet-card-details {
+    flex: 1;
+    padding: 20px;
+    min-width: 250px;
+  }
+  
+  .pet-card-details h2 {
+    margin-top: 0;
+    color: #ff8c00;
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+  
+  .pet-card-details p {
+    margin: 8px 0;
+    color: #333;
+    font-size: 15px;
+  }
+  
+  .pet-card-details p b {
+    font-weight: 600;
+    color: #555;
+  }
+  
+  /* Admin-specific styles */
+  .admin-actions {
+    flex-basis: 100%;
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    border-top: 1px solid #e9ecef;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  /* Delete button */
+  .delete-btn {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c82333;
+  }
+  
+  .delete-btn:disabled {
+    background-color: #e9a7ad;
+    cursor: not-allowed;
+  }
+  
+  /* Ban user button */
+  .ban-btn {
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+  }
+  
+  .ban-btn:hover {
+    background-color: #5a6268;
+  }
+  
+  .ban-btn:disabled {
+    background-color: #b7bbbf;
+    cursor: not-allowed;
+  }
+  
+  /* Loading spinner for buttons */
+  .button-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 8px;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Success message styling */
+  .success-message {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+  }
+  
+  .success-message i {
+    margin-right: 8px;
+    color: #28a745;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .pet-view-card {
+      flex-direction: column;
+    }
+    
+    .pet-card-pic {
+      flex: 0 0 auto;
+      height: 200px;
+      width: 100%;
+    }
+    
+    .button-group {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .delete-btn, .ban-btn {
+      width: 100%;
+    }
+  }

@@ -1,17 +1,19 @@
 import React from "react";
 import CardBelowHome from "../Home/CardBelowHome";
 import PlanningToAdoptAPet from "../Home/PlanningToAdoptAPet";
-import "../../Styles/Home.css"
+import "../../Styles/Home.css";
 import AdminHomeLandingContainer from "./AdminHomeLandingContainer";
 import AdminNavBar from "./AdminNavBar";
+import Footer from "../Footer/Footer"
 
-const AdminHomePage = (props) => {
+const AdminHomePage = () => {
   return (
     <>
       <AdminNavBar />
-      <AdminHomeLandingContainer description={props.description} />
+      <AdminHomeLandingContainer />
       <CardBelowHome />
       <PlanningToAdoptAPet />
+      <Footer />
     </>
   );
 };

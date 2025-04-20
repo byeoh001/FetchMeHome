@@ -63,6 +63,8 @@ const UserPetCards = (props) => {
   };
 
   const handleReject = async () => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this pet listing?");
+    if (!confirmDelete) return;
     setIsDeleting(true);
     try {
         const petId = props.pet._id;
@@ -152,14 +154,14 @@ const UserPetCards = (props) => {
           <div className='app-rej-btn' style={{ display: 'flex', gap: '10px' }}>
             {/* Edit Button (Only show if showEditButton is true) */}
             {props.showEditButton && (
-              <button className="edit-request-btn" onClick={() => setIsEditing(true)}>
-                Edit
-              </button>
+              <button onClick={() => setIsEditing(true)}>Edit</button>
             )}
 
+            {/* Delete Button */}
+            
             {props.deleteBtnText && (
-              <button className="delete-request-btn" onClick={handleReject} disabled={isDeleting}>
-                {isDeleting ? "Deleting..." : props.deleteBtnText}
+              <button onClick={handleReject} disabled={isDeleting}>
+                {isDeleting ? (<p>Deleting</p>) : props.deleteBtnText}
               </button>
             )}
           </div>
@@ -210,17 +212,22 @@ const UserPetCards = (props) => {
           </div>
         )}
         {showDeletedSuccess && (
-          <div className='popup'>
-            <div className='popup-content'>
-              <p>Deleted Successfully from Database...</p>
-            </div>
-            <button onClick={() => {
-              setShowDeletedSuccess(!showDeletedSuccess);
-              props.updateCards();
-            }} className='close-btn'>
-              Close <i className="fa fa-times"></i>
-            </button>
-          </div>
+          <>
+            <div className='success-popup-overlay'></div>
+            <div className='success-popup'>
+              <div className="success-icon">
+                <i className="fa fa-check-circle"></i>
+              </div>
+              <div className="success-title">Success!</div>
+              <div className="success-message">Adoption Post has been deleted successfully</div>
+              <button onClick={() => {
+                setShowDeletedSuccess(false);
+                props.updateCards();
+              }} className='success-close-btn'>
+                Close
+              </button>
+           </div>
+         </>
         )}
       </div>
     </div>

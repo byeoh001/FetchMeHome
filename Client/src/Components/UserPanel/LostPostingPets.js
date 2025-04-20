@@ -48,7 +48,7 @@ const LostPostingPets = () => {
           />
         ))
       ) : (
-        <p>No lost pets reported yet.</p>
+        <p style={{ textAlign: "center", fontStyle: "italic" }}>No lost pets reported yet.</p>
       )}
     </div>
   );
